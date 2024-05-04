@@ -67,9 +67,9 @@ if __name__ == "__main__":
 
     # Define file paths
     input_file = './data/LJSpeech-1.1/metadata.csv'
-    output_train_file = './data/LJSpeech-1.1/train1.txt'
-    output_val_file = './data/LJSpeech-1.1/val1.txt'
-    output_test_file = './data/LJSpeech-1.1/test1.txt'
+    output_train_file = './data/LJSpeech-1.1/train.txt'
+    output_val_file = './data/LJSpeech-1.1/val.txt'
+    output_test_file = './data/LJSpeech-1.1/test.txt'
 
     # Define number of lines for train, val, and test sets
     train_lines = 3000
