@@ -28,6 +28,7 @@ cd model/monotonic_align; python setup.py build_ext --inplace; cd ../..
 ```
 Download and extract the LJSpeech dataset in a directory ```data``` using the following commands
 ```
+mkdir data; cd data
 wget https://data.keithito.com/data/speech/LJSpeech-1.1.tar.bz2
 tar -xvf LJSpeech-1.1.tar.bz2
 ```
