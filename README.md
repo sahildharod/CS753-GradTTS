@@ -10,6 +10,26 @@ In this hacker role, we made the following changes to the original implementatio
    We have implemented cosine noise scheduling for the diffusion process which is given by :
    
    $min (1 - \frac{\alpha_t}{\alpha_{t-1}},0.999), \alpha_t = \frac{f(t)}{f(0)}$ where $f(t) = cos^2(\frac{i + 0.008}{1 + 0.008}*\frac{\pi}{2})$ and $i = \frac{t - 1}{T - 1}$
+```python
+def alpha_t(t, n_timesteps):
+    zero = torch.zeros((t.shape[0],1,1))
+    alpha_t = cosine_scheduler(t, n_timesteps)/cosine_scheduler(zero, n_timesteps)
+    return alpha_t
+
+def cosine_scheduler(t, n_timesteps):
+    i = (t-1)/(n_timesteps-1)
+    f_t = torch.square(torch.cos((i + 0.008)/(1.008) * torch.tensor((3.14/2.0))))
+    return f_t
+
+def get_noise(t, beta_init, beta_term, n_timesteps, cumulative=False):
+    if cumulative: 
+        noise = (torch.min((1 - (alpha_t(t/4.0, n_timesteps)/alpha_t(t/4.0-1, n_timesteps))), torch.tensor(0.999)) + 
+                torch.min((1 - (alpha_t(3*t/4.0, n_timesteps)/alpha_t(3*t/4.0-1, n_timesteps))), torch.tensor(0.999)))*(t/2)
+    else:
+        noise = torch.min((1 - (alpha_t(t, n_timesteps)/alpha_t(t-1, n_timesteps))), torch.tensor(0.999))
+
+    return noise
+```
 
 ### Installation
 Start a docker container using this command (enter ```name```)
