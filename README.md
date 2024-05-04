@@ -10,6 +10,9 @@ In this hacker role, we made the following changes to the original implementatio
    We have implemented cosine noise scheduling for the diffusion process which is given by :
    
    $min (1 - \frac{\alpha_t}{\alpha_{t-1}},0.999), \alpha_t = \frac{f(t)}{f(0)}$ where $f(t) = cos^2(\frac{i + 0.008}{1 + 0.008}*\frac{\pi}{2})$ and $i = \frac{t - 1}{T - 1}$
+
+   For cumulative noise, we used a linear approximation instead of the integral. Here are the functions that compute the variance $\beta+t$ for a given value of t
+   
 ```python
 def alpha_t(t, n_timesteps):
     zero = torch.zeros((t.shape[0],1,1))
