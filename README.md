@@ -32,7 +32,7 @@ mkdir data; cd data
 wget https://data.keithito.com/data/speech/LJSpeech-1.1.tar.bz2
 tar -xvf LJSpeech-1.1.tar.bz2
 ```
-Due to incompatibility of Cuda(12.2) and pytorch(1.9.0) versions, we could not train using the command given by the authors on GPU, use the following command to perform training on cpu
+Due to incompatibility of Cuda(12.2) and pytorch(1.9.0) versions, we could not train using the command given by the authors on GPU, we can use the following command to perform training on cpu
 ```bash
 CUDA_VISIBLE_DEVICES= python train.py
 ```
