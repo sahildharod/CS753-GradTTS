@@ -42,5 +42,6 @@ CUDA_VISIBLE_DEVICES= python train.py
 2) Add path for the model checkpoint from ```logs/new_exp/grad_x.pt``` where x is the epoch number
 3) Run script inference.py by providing path to the text file, path to the Grad-TTS checkpoint, number of timesteps to be used for reverse diffusion (default: 10): 
 ```bash
-python inference.py -f <your-text-file> -c <grad-tts-checkpoint> -t <number-of-timesteps> 
+python inference.py -f ./resources/filelists/synthesis.txt -c <grad-tts-checkpoint> -t <number-of-timesteps> 
 ```
+Check out folder called ```out``` for generated audios.
