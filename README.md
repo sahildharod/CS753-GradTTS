@@ -12,7 +12,7 @@ In this hacker role, we made the following changes to the original implementatio
    $min (1 - \frac{\alpha_t}{\alpha_{t-1}},0.999), \alpha_t = \frac{f(t)}{f(0)}$ where $f(t) = cos^2(\frac{i + 0.008}{1 + 0.008}*\frac{\pi}{2})$ and $i = \frac{t - 1}{T - 1}$
 
 ### Installation
-Start a docker container using this command 
+Start a docker container using this command (enter ```name```)
 ```bash
 docker run -it --name=<name> --gpus '"device=0,1,2,3,4,5,6,7"' --ipc=host -p 4444:8888 -v `pwd`:/workspace nvcr.io/nvidia/pytorch:23.02-py3
 ```
@@ -20,7 +20,7 @@ Firstly install the Python package requirements according to the original implem
 ```bash
 pip install -r requirements.txt
 ```
-To resolve other version related errors, install the following packages:
+To resolve torchaudio and tensorboard version related errors, install the following packages:
 ```bash
 pip install torchaudio==0.9.0
 pip install setuptools==59.5.0
