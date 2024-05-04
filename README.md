@@ -5,7 +5,7 @@ Team Members : Sahil Dharod (210070026), Azeem Motiwala (210070018), Jay Chaudha
 The paper GRAD-TTS presented the first acoustic feature generator utilizing the concept of diffusion probabilistic modelling. The main generative engine of Grad-TTS is the diffusion-based decoder that transforms Gaussian noise parameterized with the encoder output into mel-spectrogram while alignment is performed with Monotonic Alignment Search. The model we propose allows to vary the number of decoder steps at inference, thus providing a tool to control the trade-off between inference speed and synthesized speech quality.
 
 In this hacker role, we made the following changes to the original implementation:
-1) Drawing inspiration from lightweight models, we replaced the regular convolutions in the ResNet block of the decoder which has a UNet architecture with depthwise separable convolutions to reduce parameters and computation
+1) Drawing inspiration from lightweight models, we replaced the regular convolutions in the ResNet block of the decoder which has a UNet architecture with depthwise separable convolutions to reduce parameters and computation. Here are the modified codes that use depthwise separable convolutions in the ResNet Block.
 ```python
 class SeparableConv2d(BaseModule):
 
@@ -19,6 +19,18 @@ class SeparableConv2d(BaseModule):
         x = self.conv1(x)
         x = self.pointwise(x)
         return x
+
+class Block(BaseModule):
+    def __init__(self, dim, dim_out, groups=8):
+        super().__init__()
+        self.block = torch.nn.Sequential(
+            SeparableConv2d(dim, dim_out, 3, padding=1),
+            nn.GroupNorm(groups, dim_out), Mish())
+
+    def forward(self, x, mask):
+        output = self.block(x * mask)
+        return output * mask
+
 ```
 3) One of the limitations/future work proposed by the authors was to try any other variance schedule apart from 'linear'
    We have implemented cosine noise scheduling for the diffusion process which is given by :
