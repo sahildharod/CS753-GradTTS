@@ -32,8 +32,15 @@ mkdir data; cd data
 wget https://data.keithito.com/data/speech/LJSpeech-1.1.tar.bz2
 tar -xvf LJSpeech-1.1.tar.bz2
 ```
+### Training 
 Due to incompatibility of Cuda(12.2) and pytorch(1.9.0) versions, we could not train using the command given by the authors on GPU, we can use the following command to perform training on cpu
 ```bash
 CUDA_VISIBLE_DEVICES= python train.py
 ```
-
+### Inference
+1) Create text file with sentences you want to synthesize like resources/filelists/synthesis.txt.
+2) Add path for the model checkpoint from ```logs/new_exp/grad_x.pt``` where x is the epoch number
+3) Run script inference.py by providing path to the text file, path to the Grad-TTS checkpoint, number of timesteps to be used for reverse diffusion (default: 10): 
+```bash
+python inference.py -f <your-text-file> -c <grad-tts-checkpoint> -t <number-of-timesteps> 
+```
