@@ -31,13 +31,33 @@ class Block(BaseModule):
         output = self.block(x * mask)
         return output * mask
 
+class ResnetBlock(BaseModule):
+    def __init__(self, dim, dim_out, time_emb_dim, groups=8):
+        super(ResnetBlock, self).__init__()
+        self.mlp = torch.nn.Sequential(Mish(), torch.nn.Linear(time_emb_dim, 
+                                                               dim_out))
+
+        self.block1 = Block(dim, dim_out, groups=groups)
+        self.block2 = Block(dim_out, dim_out, groups=groups)
+        if dim != dim_out:
+            self.res_conv = torch.nn.Conv2d(dim, dim_out, 1)
+        else:
+            self.res_conv = torch.nn.Identity()
+
+    def forward(self, x, mask, time_emb):
+        h = self.block1(x, mask)
+        h += self.mlp(time_emb).unsqueeze(-1).unsqueeze(-1)
+        h = self.block2(h, mask)
+        output = h + self.res_conv(x * mask)
+        return output
+
 ```
 3) One of the limitations/future work proposed by the authors was to try any other variance schedule apart from 'linear'
    We have implemented cosine noise scheduling for the diffusion process which is given by :
    
    $min (1 - \frac{\alpha_t}{\alpha_{t-1}},0.999), \alpha_t = \frac{f(t)}{f(0)}$ where $f(t) = cos^2(\frac{i + 0.008}{1 + 0.008}*\frac{\pi}{2})$ and $i = \frac{t - 1}{T - 1}$
 
-   For cumulative noise, we used a linear approximation instead of the integral. Here are the functions that compute the variance $\beta_t$ for a given value of t
+   For cumulative noise, we used a linear approximation instead of the integral. Here are the functions that compute the variance $\beta_t$ for a given value of $t$
    
 ```python
 def alpha_t(t, n_timesteps):
