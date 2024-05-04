@@ -12,7 +12,11 @@ In this hacker role, we made the following changes to the original implementatio
    $min (1 - \frac{\alpha_t}{\alpha_{t-1}},0.999), \alpha_t = \frac{f(t)}{f(0)}$ where $f(t) = cos^2(\frac{i + 0.008}{1 + 0.008}*\frac{\pi}{2})$ and $i = \frac{t - 1}{T - 1}$
 
 ### Installation
-Firstly install the Python package requirements according to the original implementation (Preferably in a docker container as pytorch version 1.9.0 isn't compatible with python 3.8 or higher in an environment and the original code wass tested on python 3.6.9)
+Start a docker container using this command 
+```bash
+docker run -it --name=<name> --gpus '"device=0,1,2,3,4,5,6,7"' --ipc=host -p 4444:8888 -v `pwd`:/workspace nvcr.io/nvidia/pytorch:23.02-py3
+```
+Firstly install the Python package requirements according to the original implementation 
 ```bash
 pip install -r requirements.txt
 ```
