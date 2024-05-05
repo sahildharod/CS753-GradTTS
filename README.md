@@ -57,7 +57,7 @@ class ResnetBlock(BaseModule):
    
    $min (1 - \frac{\alpha_t}{\alpha_{t-1}},0.999), \alpha_t = \frac{f(t)}{f(0)}$ where $f(t) = cos^2(\frac{i + 0.008}{1 + 0.008}*\frac{\pi}{2})$ and $i = \frac{t - 1}{T - 1}$
 
-   For cumulative noise, we used a linear approximation instead of the integral. Here are the functions that compute the variance $\beta_t$ for a given value of $t$ (Code modified in (in ```model/diffusion.py)```)
+   For cumulative noise, we used a linear approximation instead of the integral. Here are the functions that compute the variance $\beta_t$ for a given value of $t$ (Code modified in ```model/diffusion.py```)
    
 ```python
 def alpha_t(t, n_timesteps):
