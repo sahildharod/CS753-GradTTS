@@ -106,7 +106,7 @@ wget https://data.keithito.com/data/speech/LJSpeech-1.1.tar.bz2
 tar -xvf LJSpeech-1.1.tar.bz2
 ```
 ### Training 
-Change hyperparameters in ```params.py```, default ```n_epochs = 10``` (originally 10000), ```batch_size = 16```
+Change hyperparameters in ```params.py```, default ```n_epochs = 10``` (originally 10000), ```batch_size = 32```
 
 Due to incompatibility of Cuda(12.2) and pytorch(1.9.0) versions, we could not train using the command given by the authors on GPU, we can use the following command to perform training on cpu
 ```bash
