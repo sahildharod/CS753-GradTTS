@@ -121,4 +121,4 @@ python inference.py -f ./resources/filelists/synthesis.txt -c <grad-tts-checkpoi
 ```
 Check out folder called ```out``` for generated audios.
 
-Generated audio files from inference on the checkpoint of the original implementation can be found here : [https://drive.google.com/drive/folders/1XR2w7c_QttllMVDkSd7pdTgA72R9BYsl?usp=sharing](URL)
+Generated audio files from inference on the checkpoint of the original implementation can be found here : [https://drive.google.com/drive/folders/1XR2w7c_QttllMVDkSd7pdTgA72R9BYsl?usp=sharing](https://drive.google.com/drive/folders/1XR2w7c_QttllMVDkSd7pdTgA72R9BYsl?usp=sharing)
