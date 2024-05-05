@@ -5,7 +5,7 @@ Team Members : Sahil Dharod (210070026), Azeem Motiwala (210070018), Jay Chaudha
 The paper GRAD-TTS presented the first acoustic feature generator utilizing the concept of diffusion probabilistic modelling. The main generative engine of Grad-TTS is the diffusion-based decoder that transforms Gaussian noise parameterized with the encoder output into mel-spectrogram while alignment is performed with Monotonic Alignment Search. The model we propose allows to vary the number of decoder steps at inference, thus providing a tool to control the trade-off between inference speed and synthesized speech quality.
 
 In this hacker role, we made the following changes to the original implementation:
-1) Drawing inspiration from lightweight models, we replaced the regular convolutions in the ResNet block of the decoder which has a UNet architecture with depthwise separable convolutions to reduce parameters and computation. Here are the modified codes that use depthwise separable convolutions in the ResNet Block.
+1) Drawing inspiration from lightweight models, we replaced the regular convolutions in the ResNet block of the decoder which has a UNet architecture with depthwise separable convolutions to reduce parameters and computation. Here are the modified codes that use depthwise separable convolutions in the ResNet Block (in ```model/diffusion.py)```
 ```python
 class SeparableConv2d(BaseModule):
 
@@ -57,7 +57,7 @@ class ResnetBlock(BaseModule):
    
    $min (1 - \frac{\alpha_t}{\alpha_{t-1}},0.999), \alpha_t = \frac{f(t)}{f(0)}$ where $f(t) = cos^2(\frac{i + 0.008}{1 + 0.008}*\frac{\pi}{2})$ and $i = \frac{t - 1}{T - 1}$
 
-   For cumulative noise, we used a linear approximation instead of the integral. Here are the functions that compute the variance $\beta_t$ for a given value of $t$
+   For cumulative noise, we used a linear approximation instead of the integral. Here are the functions that compute the variance $\beta_t$ for a given value of $t$ (Code modified in (in ```model/diffusion.py)```)
    
 ```python
 def alpha_t(t, n_timesteps):
