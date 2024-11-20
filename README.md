@@ -1,5 +1,6 @@
 ## Automatic Speech Recognition (Course Work and Project)
 GRAD-TTS : Diffusion Probabilistic Model for Text-to-Speech
+
 Team Members : Sahil Dharod (210070026), Azeem Motiwala (210070018), Jay Chaudhary (210070022), Shlesh Gholap (210070080)
 
 The paper GRAD-TTS presented the first acoustic feature generator utilizing the concept of diffusion probabilistic modelling. The main generative engine of Grad-TTS is the diffusion-based decoder that transforms Gaussian noise parameterized with the encoder output into mel-spectrogram while alignment is performed with Monotonic Alignment Search. The model we propose allows to vary the number of decoder steps at inference, thus providing a tool to control the trade-off between inference speed and synthesized speech quality.
@@ -122,3 +123,6 @@ python inference.py -f ./resources/filelists/synthesis.txt -c <grad-tts-checkpoi
 Check out folder called ```out``` for generated audios.
 
 Generated audio files from inference on the checkpoint of the original implementation can be found here : [https://drive.google.com/drive/folders/1XR2w7c_QttllMVDkSd7pdTgA72R9BYsl?usp=sharing](https://drive.google.com/drive/folders/1XR2w7c_QttllMVDkSd7pdTgA72R9BYsl?usp=sharing)
+
+Additionally, we also wrote a blog on the paper DASpeech : Directed Acyclic Transformer for Fast and High-Quality Speech-to-Speech Translation which can be found here : [https://hackmd.io/s/By5-1l-bR](https://hackmd.io/s/By5-1l-bR)
+
