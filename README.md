@@ -126,3 +126,6 @@ Generated audio files from inference on the checkpoint of the original implement
 
 Additionally, we also wrote a blog on the paper DASpeech : Directed Acyclic Transformer for Fast and High-Quality Speech-to-Speech Translation which can be found here : [https://hackmd.io/s/By5-1l-bR](https://hackmd.io/s/By5-1l-bR)
 
+We also presented the paper : Self-supervised Learning with Random-projection
+Quantizer for Speech Recognition, and the slides can be found here [https://drive.google.com/file/d/1-M5SRR1zWU9NSbT_16uLRPnIaHzpmaeP/view?usp=sharing](https://drive.google.com/file/d/1-M5SRR1zWU9NSbT_16uLRPnIaHzpmaeP/view?usp=sharing)
+
