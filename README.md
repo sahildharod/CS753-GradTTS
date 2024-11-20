@@ -1,5 +1,5 @@
 ## Automatic Speech Recognition (Course Work and Project)
-GRAD-TTS : Diffusion Probabilistic Model for Text-to-Speech
+### GRAD-TTS : Diffusion Probabilistic Model for Text-to-Speech
 
 Team Members : Sahil Dharod (210070026), Azeem Motiwala (210070018), Jay Chaudhary (210070022), Shlesh Gholap (210070080)
 
@@ -124,8 +124,10 @@ Check out folder called ```out``` for generated audios.
 
 Generated audio files from inference on the checkpoint of the original implementation can be found here : [https://drive.google.com/drive/folders/1XR2w7c_QttllMVDkSd7pdTgA72R9BYsl?usp=sharing](https://drive.google.com/drive/folders/1XR2w7c_QttllMVDkSd7pdTgA72R9BYsl?usp=sharing)
 
+### BLOG
 Additionally, we also wrote a blog on the paper DASpeech : Directed Acyclic Transformer for Fast and High-Quality Speech-to-Speech Translation which can be found here : [https://hackmd.io/s/By5-1l-bR](https://hackmd.io/s/By5-1l-bR)
 
+### Presentation
 We also presented the paper : Self-supervised Learning with Random-projection
 Quantizer for Speech Recognition, and the slides can be found here [https://drive.google.com/file/d/1-M5SRR1zWU9NSbT_16uLRPnIaHzpmaeP/view?usp=sharing](https://drive.google.com/file/d/1-M5SRR1zWU9NSbT_16uLRPnIaHzpmaeP/view?usp=sharing)
 
